@@ -1,6 +1,6 @@
 import { errors } from 'celebrate';
 import cors from 'cors';
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 
 import routes from './routes';
@@ -17,5 +17,12 @@ app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use(errors());
 
 app.use((req, res) => res.status(404).json({ error: 'Not Found' }));
+
+app.use(
+  (err: IErrorWithStatus, req: Request, res: Response, next: NextFunction) => {
+    res.status(err.status || 500).send(err.message);
+    return next();
+  }
+);
 
 app.listen(3333);

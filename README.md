@@ -99,7 +99,7 @@ If you are using [Insomnia](https://insomnia.rest/) or another REST API Client, 
 - Make CRUD for Points
 - Make CRUD for Items
 - TDD for all files
-- Filter in Multer to accept only images
+- ~~Filter in Multer to only accept images~~
 
 ## 🗃 Others application repositories <a name="othersApplicationRepositories" />
 
