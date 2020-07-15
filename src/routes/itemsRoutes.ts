@@ -17,10 +17,10 @@ routes.get('/', itemsController.index);
 routes.get('/:id', itemsController.show);
 
 routes.post(
-  '/',
-  upload.single('image'),
-  celebrate(createItemSchema, { abortEarly: false }),
-  itemsController.create
+	'/',
+	upload.single('image'),
+	celebrate(createItemSchema, { abortEarly: false }),
+	itemsController.create
 );
 
 routes.put('/:id', upload.single('image'), itemsController.update);

@@ -22,11 +22,9 @@ app.use(errors());
 
 app.use((req, res) => res.status(404).json({ error: 'Not Found' }));
 
-app.use(
-  (err: IErrorWithStatus, req: Request, res: Response, next: NextFunction) => {
-    res.status(err.status || 500).send(err.message);
-    return next();
-  }
-);
+app.use((err: IErrorWithStatus, req: Request, res: Response, next: NextFunction) => {
+	res.status(err.status || 500).send(err.message);
+	return next();
+});
 
 app.listen(3333);
