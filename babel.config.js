@@ -18,6 +18,7 @@ module.exports = {
           '@controllers': './src/controllers',
           '@configs': './src/configs',
           '@validators': './src/validators',
+          '@routes': './src/routes',
         },
       },
     ],

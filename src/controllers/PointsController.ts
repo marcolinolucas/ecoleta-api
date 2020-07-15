@@ -1,5 +1,6 @@
-// index, show, create, update, delete
 import { Request, Response } from 'express';
+import fs from 'fs';
+import path from 'path';
 
 import knex from '../database/connection';
 
@@ -14,8 +15,8 @@ class PointsController {
     const points = await knex('points')
       .join('pointItems', 'points.id', '=', 'pointItems.pointId')
       .whereIn('pointItems.itemId', parsedItem)
-      .where('city', String(city))
-      .where('uf', String(uf))
+      .where({ city: String(city) })
+      .where({ uf: String(uf) })
       .distinct()
       .select('points.*');
 
@@ -32,7 +33,7 @@ class PointsController {
   async show(req: Request, res: Response) {
     const { id } = req.params;
 
-    const point = await knex('points').where('id', id).first();
+    const point = await knex('points').where({ id }).first();
 
     if (!point) return res.status(400).json({ message: 'Point not found.' });
 
@@ -43,7 +44,7 @@ class PointsController {
 
     const items = await knex('items')
       .join('pointItems', 'items.id', '=', 'pointItems.itemId')
-      .where('pointItems.pointId', id)
+      .where({ 'pointItems.pointId': id })
       .select('items.title');
 
     return res.json({
@@ -99,6 +100,50 @@ class PointsController {
       id: pointId,
       ...point,
     });
+  }
+
+  async update(req: Request, res: Response) {
+    const {
+      pointId,
+      name,
+      email,
+      whatsapp,
+      latitude,
+      longitude,
+      city,
+      uf,
+      items,
+    } = req.body;
+
+    const updatedPoint = await knex('points').where({ id: pointId }).update({
+      name,
+      email,
+      whatsapp,
+      latitude,
+      longitude,
+      city,
+      uf,
+      items,
+    });
+
+    if (updatedPoint === 0) {
+      return res.status(400).json({ message: 'Point not found.' });
+    }
+
+    return res.status(204).send();
+  }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const point = await knex('points').where({ id }).first();
+    if (!point) return res.status(400).json({ message: 'Point not found.' });
+
+    await knex('points').where({ id }).del();
+
+    fs.unlinkSync(path.resolve(__dirname, '..', '..', 'uploads', point.image));
+
+    return res.status(204).send();
   }
 }
 

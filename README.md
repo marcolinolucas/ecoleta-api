@@ -96,7 +96,7 @@ If you are using [Insomnia](https://insomnia.rest/) or another REST API Client, 
 
 ## 💡 Future features <a name="futureFeatures" />
 
-- Make CRUD for Points
+- ~~Make CRUD for Points~~
 - Make CRUD for Items
 - TDD for all files
 - ~~Filter in Multer to only accept images~~

@@ -17,4 +17,20 @@ const createPointSchema = {
     .required(),
 };
 
-export { createPointSchema };
+const updatePointSchema = {
+  [Segments.BODY]: Joi.object()
+    .keys({
+      pointId: Joi.number().required(),
+      name: Joi.string(),
+      email: Joi.string().email(),
+      whatsapp: Joi.string().max(11),
+      latitude: Joi.number(),
+      longitude: Joi.number(),
+      city: Joi.string(),
+      uf: Joi.string().max(2),
+      items: Joi.string().regex(/^\d+(,\d+)*$/),
+    })
+    .required(),
+};
+
+export { createPointSchema, updatePointSchema };

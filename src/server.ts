@@ -1,18 +1,22 @@
 import { errors } from 'celebrate';
 import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
+import logger from 'morgan';
 import path from 'path';
 
-import routes from './routes';
+import itemsRoutes from '@routes/itemsRoutes';
+import pointsRoutes from '@routes/pointsRoutes';
 
 const app = express();
 
 app.use(cors());
+app.use(logger(':method :url :status - :response-time ms'));
 app.use(express.json());
 
-app.use('/', routes);
-
 app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
+
+app.use('/points', pointsRoutes);
+app.use('/items', itemsRoutes);
 
 app.use(errors());
 
