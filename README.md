@@ -14,7 +14,7 @@ the location and items. After that they can contact them using email or whatsapp
 ## 🗒 Index
 
 - [Technologies](#technologies)
-- [How to start](#howToStart) 
+- [How to start](#howToStart)
 - [Scripts explanation](#scriptsExplanation)
 - [Learn with videos](#learnWithVideos)
 - [Routes for API REST client](#routesForApiRestClient)
@@ -40,6 +40,8 @@ the location and items. After that they can contact them using email or whatsapp
 | [Cross-env]          | Use environment variables across platforms |
 | [Babel]          | JavaScript transcompiler |
 | [Eslint]          | Identify and reports patterns |
+| [morgan]          | HTTP request logger middleware |
+| [cross-env]          | Use environment variables across platforms |
 
 [Node.js]: https://nodejs.org
 [TypeScript]: https://www.typescriptlang.org
@@ -54,7 +56,8 @@ the location and items. After that they can contact them using email or whatsapp
 [Cross-env]: https://github.com/kentcdodds/cross-env
 [Babel]: https://babeljs.io/
 [Eslint]: https://github.com/eslint/eslint
-
+[morgan]: https://github.com/expressjs/morgan
+[cross-env]: https://github.com/kentcdodds/cross-env
 
 ## 🚀 How to Start <a name="howToStart" />
 
@@ -85,6 +88,8 @@ Now all is working. Congratulations!
 | ``` npm run knex:migrate ```             | Create and update the database |
 | ``` npm run knex:seed ```             | Insert initial data in database |
 | ``` npm run lint ```             | Verify patterns and fix code |
+| ``` npm run test-items-routes ```             | Verify patterns and fix code |
+| ``` npm run test-points-routes ```             | Verify patterns and fix code |
 
 ## 🎥 Learn with videos <a name="learnWithVideos" />
 
@@ -98,7 +103,7 @@ If you are using [Insomnia](https://insomnia.rest/) or another REST API Client, 
 
 - ~~Make CRUD for Points~~
 - ~~Make CRUD for Items~~
-- TDD for all files
+- ~~TDD for all files~~
 - ~~Filter in Multer to only accept images~~
 
 ## 🗃 Others application repositories <a name="othersApplicationRepositories" />
