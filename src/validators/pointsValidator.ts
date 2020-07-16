@@ -20,7 +20,6 @@ const createPointSchema = {
 const updatePointSchema = {
 	[Segments.BODY]: Joi.object()
 		.keys({
-			pointId: Joi.number().required(),
 			name: Joi.string(),
 			email: Joi.string().email(),
 			whatsapp: Joi.string().max(11),

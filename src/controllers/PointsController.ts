@@ -94,9 +94,10 @@ class PointsController {
 	}
 
 	async update(req: Request, res: Response) {
-		const { pointId, name, email, whatsapp, latitude, longitude, city, uf, items } = req.body;
+		const { name, email, whatsapp, latitude, longitude, city, uf, items } = req.body;
+		const { id } = req.params;
 
-		const updatedPoint = await knex('points').where({ id: pointId }).update({
+		const updatedPoint = await knex('points').where({ id }).update({
 			name,
 			email,
 			whatsapp,

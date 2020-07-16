@@ -22,7 +22,7 @@ routes.get('/', pointsController.index);
 
 routes.get('/:id', pointsController.show);
 
-routes.put('/', celebrate(updatePointSchema, { abortEarly: false }), pointsController.update);
+routes.put('/:id', celebrate(updatePointSchema, { abortEarly: false }), pointsController.update);
 
 routes.delete('/:id', pointsController.delete);
 
