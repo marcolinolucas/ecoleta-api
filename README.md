@@ -88,8 +88,8 @@ Now all is working. Congratulations!
 | ``` npm run knex:migrate ```             | Create and update the database |
 | ``` npm run knex:seed ```             | Insert initial data in database |
 | ``` npm run lint ```             | Verify patterns and fix code |
-| ``` npm run test-items-routes ```             | Verify patterns and fix code |
-| ``` npm run test-points-routes ```             | Verify patterns and fix code |
+| ``` npm run test-items-routes ```             | Test items routes |
+| ``` npm run test-points-routes ```             | Test points routes |
 
 ## 🎥 Learn with videos <a name="learnWithVideos" />
 
